@@ -1,6 +1,6 @@
 #src-svn packages svn://svn.openwrt.org.cn/dreambox/feeds/packages_10.03.2
 src-svn qpe svn://svn.openwrt.org.cn/dreambox/feeds/qpe
-src-svn device https://github.com/iAlios/openwrt-fl2440-devices
+src-svn device git://github.com/iAlios/openwrt-fl2440-devices
 #src-svn dreambox_packages svn://svn.openwrt.org.cn/dreambox/feeds/dreambox_packages
 #src-svn luci_cn svn://svn.openwrt.org.cn/dreambox/feeds/luci/trunk
 
