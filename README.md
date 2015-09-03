@@ -1,5 +1,5 @@
 
-OpenWrt Backfire_10.03.1
+OpenWrt for FL2440 based on Backfire_10.03.1
 ===
 ---------------------------------
 同步于openwrt官方嵌入式开发版本分支，用于添加对 fl2440 开发板的 porting 工作。
