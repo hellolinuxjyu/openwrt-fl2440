@@ -2,6 +2,10 @@
 OpenWrt Backfire_10.03.1
 ===
 ---------------------------------
+同步于openwrt官方嵌入式开发版本分支，用于添加对 fl2440 开发板的 porting 工作。
+
+相关说明请参见官方文档，该仓储仅供参考学习使用.
+
 SVN仓：[svn://svn.openwrt.org.cn/dreambox/branches/openosom](https://dev.openwrt.org.cn/browser/branches/openosom)
 
 GIT仓：[git://github.com/openosom/backfire_10.03.1](https://github.com/openosom/backfire_10.03.1)
