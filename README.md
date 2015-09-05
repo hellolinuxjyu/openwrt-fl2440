@@ -66,7 +66,7 @@ GIT仓：[git://github.com/openosom/backfire_10.03.1](https://github.com/openoso
             
      4) 编译并将其日志存入到文件中
 
-	make V=99 2>&1 |tee build.log |grep -i error
+        make V=99 2>&1 |tee build.log |grep -i error
 
 2. 添加 Boot Loader 
 ---------------------------------
