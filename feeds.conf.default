@@ -1,5 +1,5 @@
 #src-svn packages svn://svn.openwrt.org.cn/dreambox/feeds/packages_10.03.2
-src-svn qpe svn://svn.openwrt.org.cn/dreambox/feeds/qpe
+#src-svn qpe svn://svn.openwrt.org.cn/dreambox/feeds/qpe
 src-git device https://github.com/iAlios/openwrt-fl2440-devices.git
 #src-svn dreambox_packages svn://svn.openwrt.org.cn/dreambox/feeds/dreambox_packages
 #src-svn luci_cn svn://svn.openwrt.org.cn/dreambox/feeds/luci/trunk
@@ -9,7 +9,7 @@ src-git luci https://github.com/openwrt/luci.git
 #src-git routing https://github.com/openwrt-routing/packages.git
 #src-git telephony https://github.com/openwrt/telephony.git
 src-git management https://github.com/openwrt-management/packages.git
-src-git targets https://github.com/openwrt/targets.git
+#src-git targets https://github.com/openwrt/targets.git
 src-git xwrt https://github.com/openwrt-es/backfire-openwrt-xwrt.git
 
 #src-svn packages svn://svn.openwrt.org.cn/dreambox/feeds/packages_10.03.2
