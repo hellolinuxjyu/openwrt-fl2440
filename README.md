@@ -1,49 +1,162 @@
-
-OpenWrt for FL2440 based on Backfire_10.03.1
+OpenWrt-FL2440 ¿ª·¢±Ê¼Ç
 ===
 ---------------------------------
-åŒæ­¥äºopenwrtå®˜æ–¹åµŒå…¥å¼å¼€å‘ç‰ˆæœ¬åˆ†æ”¯ï¼Œç”¨äºæ·»åŠ å¯¹ fl2440 å¼€å‘æ¿çš„ porting å·¥ä½œã€‚
+Í¬²½ÓÚopenwrt¹Ù·½Ç¶ÈëÊ½¿ª·¢°æ±¾·ÖÖ§£¬ÓÃÓÚÌí¼Ó¶Ô fl2440 ¿ª·¢°åµÄ porting ¹¤×÷¡£
 
-ç›¸å…³è¯´æ˜è¯·å‚è§å®˜æ–¹æ–‡æ¡£ï¼Œè¯¥ä»“å‚¨ä»…ä¾›å‚è€ƒå­¦ä¹ ä½¿ç”¨.
+Ïà¹ØËµÃ÷Çë²Î¼û¹Ù·½ÎÄµµ£¬¸Ã²Ö´¢½ö¹©²Î¿¼Ñ§Ï°Ê¹ÓÃ.
 
-SVNä»“ï¼š[svn://svn.openwrt.org.cn/dreambox/branches/openosom](https://dev.openwrt.org.cn/browser/branches/openosom)
+¹Ù·½Ô´ÈçÏÂ£º
 
-GITä»“ï¼š[git://github.com/openosom/backfire_10.03.1](https://github.com/openosom/backfire_10.03.1)
+SVN²Ö£º[svn://svn.openwrt.org.cn/dreambox/branches/openosom](https://dev.openwrt.org.cn/browser/branches/openosom)
 
+GIT²Ö£º[git://github.com/openosom/backfire_10.03.1](https://github.com/openosom/backfire_10.03.1)
 
-OpenWrt-DreamBox/branches/sunåˆ†æ”¯æ˜¯åŸºäºOpenWrtå®˜ç½‘tags/backfire_10.03.1è¿›è¡Œä¿®æ”¹ï¼š
+ÏÂÃæÊÇÖ÷ÒªµÄĞŞ¸Ä¹ı³Ì¼°·ÖÎö
 
-    1 package/base-files/files/etc/banner   ï¼š
-    2 rules.mk                              ï¼šå¯¹toolchainåŠ å…¥_v7-aå‰ç¼€
-    3 scripts/metadata.pl                   ï¼šä¿®æ”¹é»˜è®¤ç¡¬ä»¶è®¾å¤‡ä¸ºTARGET_s3c24xx
-    4 feeds.conf.default                    ï¼š
-    5 toolchain/Config.in                   ï¼šé»˜è®¤libcä»uClibcæ”¹ä¸ºeglibc
-    6 toolchain/eglibc/Config.version       ï¼šå½“é»˜è®¤libcä¸ºeglibcæ—¶ï¼Œé»˜è®¤çš„eglibcé…ç½®
-    7 toolchain/glibc/Config.version        ï¼šå½“é»˜è®¤libcä¸ºglibcæ—¶ï¼Œé»˜è®¤çš„glibcé…ç½®
-    8 tools/yaffs2/Makefile                 ï¼šåŠ å…¥å¦å¤–ä¸€ç§larger page NANDçš„yaffså·¥å…·
-      tools/yaffs2/patches/101-mkyaffs2image-page2k.patch
+1. °²×°±àÒë»·¾³
+---------------------------------
+    
+    $ sudo apt-get install subversion build-essential libncurses5-dev zlib1g-dev gawk git ccache gettext libssl-dev xsltproc file
 
+2. ¼òµ¥µÄ±àÒë¹ı³Ì·ÖÎö
+---------------------------------
 
-OpenWrtçš„å®˜ç½‘SVNä»“æ¶æ„ï¼š
+    1) °²×° device, packages, managements, xwrt, luci µÈÏà¹Ø×é½¨
 
-    1 tagsï¼š
-        å­˜æ”¾å„ä¸ªç¨³å®šç‰ˆæœ¬çš„OpenWrt
+        a) Í¬²½ËùÓĞ×é½¨£¬¼´ feeds update µÄ¹ı³Ì
+
+                $ ./scripts/feeds update -a
+
+            ÔÚÕâ¸ö¹ı³ÌÖĞ£¬feeds Í¨¹ı feeds.conf.default ÎÄ¼şÖĞÅäÖÃµÄ¸÷¸ö×é¼şµÄ»ñÈ¡·½Ê½¼°»ñÈ¡Ô´À´Í¬²½ÏàÓ¦µÄÄÚÈİ£¬Í¬²½·½Ê½Ö÷ÒªÓĞ src-svn, src-cpy, src-link, src-git, src-gitsvn, src-bzr, src-hg ¹² 7 ÖĞ·½Ê½(ÏêÏ¸²Î¼û scritps/feeds ÎÄ¼ş)¡£½«ÆäÏÂÔØµ½ feeds Ä¿Â¼ÏÂ½øĞĞ´æ·Å£¬Í¬Ê±»á²úÉúÒ»Ğ©ÁÙÊ±ÎÄ¼ş£¬±ÈÈç devices »áÓĞ devices.tmp, devices.index¡£
+
+        b) °²×°ËùÓĞ×é½¨£¬¼´ feeds install µÄ¹ı³Ì
+
+                $ ./scripts/feeds install -a
+
+            ¸Ã¹ı³ÌÊµ¼ÊÉÏÊÇ½« feeds update Í¬²½ÏÂµÄ×é½¨ copy µ½ package/feeds Ä¿Â¼ÏÂ½øĞĞ´æ·Å¡£ÔÚ°²×°ÕâĞ©ÎÄ¼şÖ®Ç°£¬´´½¨ÁË±àÒëÊ±ºòĞèÒªµÄÒ»Ğ©±ØÒªµÄÎÄ¼ş¼Ğ£¬¾ßÌåÈçÏÂ£º
+
+                mkdir -p ./staging_dir/toolchain-arm_v4t_gcc-4.3.3+cs_eglibc-2.8_eabi
+                cd ./staging_dir/toolchain-arm_v4t_gcc-4.3.3+cs_eglibc-2.8_eabi
+                mkdir -p stamp lib usr/include usr/lib
+
+            ÕâÑùÎªÖ®ºó±àÒë½»²æ±àÒë¹¤¾ßºÍÎÄ¼şÏµÍ³×ö×¼±¸¡£
             
-    2 trunkå’Œbranches/{kamikaze-before-brng, whiterussian, 8.09, backfire, attitude_adjustment}ï¼š
-        å­˜æ”¾å¼€å‘ç‰ˆæœ¬å’Œå„ä¸ªåˆ†æ”¯çš„OpenWrt
-
-    3 branches/packages_xxxï¼š
-        å­˜æ”¾å„ä¸ªç¨³å®šç‰ˆæœ¬çš„packages feeds
+    2) ĞŞ¸Ä±àÒë²Ëµ¥
         
-    4 packageså’Œfeeds/xorgï¼š
-        å­˜æ”¾å¼€å‘ç‰ˆæœ¬çš„packagefeeds
+        make menuconfig
 
+    3) Ö´ĞĞ±àÒë
 
+        make V=99   # ´òÓ¡ËùÓĞ±àÒë¹ı³Ì
+        »òÕß
+        make V=s  # ²»´òÓ¡ÈÎºÎ±àÒë¹ı³ÌÏûÏ¢( s ÊÇ silent µÄÒâË¼)
 
+        ¶Ô V Õâ¸ö²ÎÊıµÄ¶¨Òå£¬ÆäÊµÊÇÔÚ openwrt ±àÒëÏµÍ³ÖĞµÄÒ»¸ö±ØÒª²ÎÊı£¬ÆäÊ¹ÓÃÊÇÔÚ include/verbose.mk ÎÄ¼şÖĞ½øĞĞ´¦ÀíµÄ£¬ÈçÏÂ£º
+
+            ifeq ("$(origin V)", "command line")
+                KBUILD_VERBOSE:=$(V)
+            endif
+        
+        Í¨¹ıÉÏÊö·½Ê½½« V ²ÎÊı´«µİ¸ø KBUILD_VERBOSE ±äÁ¿£¬È»ºóÔÚÏÂÎÄÖĞ½øĞĞÅĞ¶Ï£¬Èç¹ûÊÇ 99 ¾Í»á¶¨ÒåÈçÏÂÄÚÈİ£º
+  
+            SUBMAKE=$(MAKE) -w
+            define MESSAGE
+                printf "%s\n" "$(1)"
+            endef
+            
+
+2. Ìí¼Ó Boot Loader 
 ---------------------------------
-_Copyright 2014 (C) Neil([openosom@gamil.com](gmail.google.com))_
+    
+    ÔÚ openwrt ÖĞÖ÷ÒªÊÇÍ¨¹ı feeds/device À´¹ÜÀíĞÂÉè±¸µÄÏà¹ØµÄÄÚÈİ£¬ÆäÖĞ°üÀ¨ÁË qemu ĞéÄâ»úÏà¹ØµÄÄÚÈİ£¬(Æä×î¿ªÊ¼ÊÇ½« uboot Ïà¹Ø¶«Î÷Ò²ÊÇ·ÅÔÚ menuconfig ²Ëµ¥ÀïÃæµÄ Devices ×Ó²Ëµ¥ÖĞ£¬·½±ã¸öÈË²é¿´ÒÑ½«ÏàÓ¦ÄÚÈİÒÆ¶¯µ½ Boot Loaders ²Ëµ¥ÖĞ) 
 
-_2014-05-30_
+    ÎªÁË·½±ãÆğ¼û£¬×îºÃÏÈ×Ô¼º´´½¨Ò»¸ö git server ÓÃÀ´×öÎª device feeds »ñÈ¡µÄÔ´£¬È»ºóÍ¨¹ıĞŞ¸Ä feed.conf ÎÄ¼şÀ´½« ./scripts
 
+    1) ÔÚ feeds/device Ä¿Â¼ÏÂ´´½¨ uboot-fl2440 Ä¿Â¼, ²¢Ìí¼ÓÏàÓ¦µÄ Makefile ÎÄ¼ş¡£
+    2) ĞŞ¸ÄÏàÓ¦µÄ Makefile ÎÄ¼ş´Ó¶øÊµÏÖ×Ô¶¨ÒåµÄ boot loader µÄ×°ÔØ¹ı³Ì£¬ÒÔ¼°±àÒëÅäÖÃ£¬¾ßÌåÈçÏÂ£º
+        
+        a) Ô´ÂëÅäÖÃ
+
+            # °üÃû³Æ  
+            PKG_NAME:=uboot-fl2440
+            # °æ±¾ĞÅÏ¢
+            PKG_VERSION:=2010.09
+            PKG_RELEASE:=1
+
+            # ÏÂÔØÑ¹ËõÎÄ¼ş
+            PKG_SOURCE:=u-boot-2010.03-fl2440.tar.bz2
+            # ½âÑ¹ËõÎÄ¼ş
+            PKG_SOURCE_SUBDIR:=u-boot-2010.09-fl2440
+            # ±àÒëÄ¿Â¼
+            PKG_BUILD_DIR=$(KERNEL_BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
+            # ´úÂëÍ¬²½Â·¾¶
+            PKG_SOURCE_URL:=git://github.com/iAlios/fl2440-uboot-2010.09.git
+            # ´úÂëÍ¬²½·½Ê½
+            PKG_SOURCE_PROTO:=git
+            # ´úÂë°æ±¾(Ö¸¶¨µÄÌá½»µÄ½Úµã commit ID)
+            PKG_SOURCE_VERSION:=7877290e987a95dc834e686a059ab5ceb04fb714
+
+        b) menuconfig ÅäÖÃ
+                    
+            define Package/$(PKG_NAME)
+              # ÉèÖÃ²Ëµ¥Ãû³Æ
+              TITLE:=for fl2440(iAlios)
+              # ÉèÖÃ¸ù²Ëµ¥ÖĞÃû³Æ
+              CATEGORY:=Boot Loaders
+              # ÉèÖÃ·ÖÇøÃû³Æ
+              SECTION:=uboot
+              # ÉèÖÃ±àÒëÒÀÀµ
+              DEPENDS:=@TARGET_s3c24xx 
+              URL:=http://www.denx.de/wiki/U-Boot
+            endef
+
+        c) ±àÒëÅäÖÃ
+
+            define Build/Prepare
+                # ½âÑ¹ÎÄ¼ş
+                $(PKG_UNPACK)
+                # °²×° patch
+                $(Build/Patch)
+                # É¾³ı²»±ØÒªµÄÖĞ¼äÎÄ¼ş
+                $(FIND) $(PKG_BUILD_DIR) -name .svn | $(XARGS) rm -rf
+            endef
+
+            define Build/Compile
+                # ±àÒëÅäÖÃ
+                $(MAKE) -C $(PKG_BUILD_DIR) fl2440_config
+                # ±àÒë
+                $(MAKE) -C $(PKG_BUILD_DIR) CROSS_COMPILE=$(TARGET_CROSS)
+            endef
+
+        d) °²×°ÅäÖÃ
+
+            define Package/$(PKG_NAME)/install
+                $(INSTALL_DIR) $(BIN_DIR)
+                dd if=$(PKG_BUILD_DIR)/u-boot.bin of=$(BIN_DIR)/$(PKG_NAME).bin bs=128k conv=sync
+            endef
+
+3. Ìí¼ÓĞÂ CPU ¼Ü¹¹
 ---------------------------------
-ä¿ç•™äº†åŸå®˜æ–¹ç›¸å…³ç‰ˆæƒè¯´æ˜ï¼Œå¦‚éœ€è¦ä½¿ç”¨å®˜æ–¹ç›¸å…³å†…å®¹ï¼Œè¯·é€šè¿‡ä¸Šé¢å®˜æ–¹é“¾æ¥è¿›è¡Œè·å–ï¼Œè°¢è°¢åˆä½œã€‚
+
+   ËùÓĞÓë kernel Ïà¹ØµÄÄÚÈİ¶¼ÊÇ´æ·ÅÔÚ target/linux Ä¿Â¼ÏÂ¡£
+
+    1) ÔÚ openwrt ±àÒëÏµÍ³ÖĞÊÇÍ¨¹ı Config.in ÎÄ¼şÀ´½øĞĞÅäÖÃ menuconfig ²Ëµ¥µÄ¡£¶øÔÚ openwrt ÌåÏµÖĞÊÇÍ¨¹ıÔÚ Makefile ÖĞ¶¨ÒåÈçÏÂÄÚÈİÀ´½øĞĞ´´½¨²Ëµ¥µÄ£º
+       
+    target/linux/s3c24xx/Makefile ÎÄ¼şÖĞÌí¼Ó×ÓÄ¿±êÄ¿Â¼£º
+	   
+        SUBTARGETS:=dev-s3c2440 dev-s3c2410 dev-fs2410 dev-mini2440 dev-fl2440 dev-gec2410 dev-gec2440 dev-qq2440
+   
+    2) ÔÚ target/linux/s3c24xx ÎÄ¼ş¼ĞÏÂÃæ½¨Á¢ dev-fl2440 Ä¿Â¼£¬²¢Ìí¼ÓÏà¹ØµÄĞŞ¸ÄÎÄ¼ş£¬ÆäÖĞ×îÖ÷ÒªµÄÎÄ¼şÊÇ target.mk £¬ËüÊÇÓÃÀ´ÉùÃ÷µ±Ç°¿ª·¢°åÓÃµÄ£¬ÈçÏÂËùÊ¾£º
+
+	    BOARDNAME:=FL2440 Development Board
+
+	    define Target/Description
+		    FL2440 Development Board
+        endef
+       
+---------------------------------
+##### Copyright 2015 (C) i.lufei([m.lufei@qq.com](mail.qq.com)) #####
+
+ÈçĞèÒªÊ¹ÓÃ¹Ù·½Ïà¹ØÄÚÈİ£¬ÇëÍ¨¹ıÉÏÃæ¹Ù·½Á´½Ó½øĞĞ»ñÈ¡£¬Ğ»Ğ»ºÏ×÷¡£
+
+##### 2015-09-05 #####
