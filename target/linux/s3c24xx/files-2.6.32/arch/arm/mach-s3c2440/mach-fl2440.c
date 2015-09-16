@@ -250,28 +250,17 @@ static struct platform_device s3c24xx_uda134x = {
 
 static struct mtd_partition fl2440_arm_default_nand_part[] = {
 	[0] = {
-		.name	= "u-boot",
+		.name	= "uboot",
 		.size	= SZ_256K+SZ_128K,
 		.offset	= 0,
 	},
 	[1] = {
-		.name	= "u-boot-env",
-		.offset = SZ_256K+SZ_128K,
-		.size	= SZ_128K,
-	},
-	[2] = {
 		.name	= "kernel",
 		.offset = ((SZ_256K+SZ_128K)+SZ_128K),
 		.size	= (SZ_1M * 5),
 	},
-	[3] = {
+	[2] = {
 		.name	= "rootfs",
-		.offset = (((SZ_256K+SZ_128K)+SZ_128K)+ (SZ_1M * 5)),
-		.size	= (SZ_1M * 50),
-//		.size	= 0x2000000,
-	},
-	[4] = {
-		.name	= "other-rootfs",
 		.offset = MTDPART_OFS_APPEND,
 		.size	= MTDPART_SIZ_FULL,
 	},
@@ -361,12 +350,12 @@ static struct gpio_led fl2440_led_pins[] = {
 	},
 	{
 		.name		= "LED3",
-		.gpio		= S3C2410_GPB(7),
+		.gpio		= S3C2410_GPB(8),
 		.active_low	= true,
 	},
 	{
 		.name		= "LED4",
-		.gpio		= S3C2410_GPB(8),
+		.gpio		= S3C2410_GPB(10),
 		.active_low	= true,
 	},
 };
@@ -387,37 +376,25 @@ static struct gpio_keys_button fl2440_buttons[] = {
 		.desc		= "BTN0",
 		.type		= EV_KEY,
 		.code		= BTN_0,
-		.gpio		= S3C2410_GPG(11),
+		.gpio		= S3C2410_GPF(0),
 		.active_low	= 1,
 	}, {
 		.desc		= "BTN1",
 		.type		= EV_KEY,
 		.code		= BTN_1,
-		.gpio		= S3C2410_GPG(7),
+		.gpio		= S3C2410_GPF(2),
 		.active_low	= 1,
 	}, {
 		.desc		= "BTN2",
 		.type		= EV_KEY,
 		.code		= BTN_2,
-		.gpio		= S3C2410_GPG(6),
+		.gpio		= S3C2410_GPF(3),
 		.active_low	= 1,
 	}, {
 		.desc		= "BTN3",
 		.type		= EV_KEY,
 		.code		= BTN_3,
-		.gpio		= S3C2410_GPG(5),
-		.active_low	= 1,
-	},{
-		.desc		= "BTN4",
-		.type		= EV_KEY,
-		.code		= BTN_4,
-		.gpio		= S3C2410_GPG(3),
-		.active_low	= 1,
-	}, {
-		.desc		= "BTN5",
-		.type		= EV_KEY,
-		.code		= BTN_5,
-		.gpio		= S3C2410_GPG(0),
+		.gpio		= S3C2410_GPF(4),
 		.active_low	= 1,
 	},
 };
