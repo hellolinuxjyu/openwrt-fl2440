@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 ARCH:=arm
 BOARD:=s3c24xx
 BOARDNAME:=Samsung S3C24xx
-FEATURES:=jffs2 squashfs
+FEATURES:=jffs2 squashfs yaffs2
 CFLAGS:=-O2 -pipe -march=armv4t -mtune=arm920t -funit-at-a-time
 SUBTARGETS:=dev-s3c2440 dev-s3c2410 dev-fs2410 dev-mini2440 dev-fl2440 dev-gec2410 dev-gec2440 dev-qq2440
 

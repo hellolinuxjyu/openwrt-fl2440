@@ -84,6 +84,13 @@ menu "Target Images"
 		help
 		  Build a jffs2 root filesystem
 
+	config TARGET_ROOTFS_YAFFS2
+		bool "yaffs2"
+		default y if USES_YAFFS2
+		depends !TARGET_ROOTFS_INITRAMFS
+		help
+		  Build a yaffs2 root filesystem
+
 	config TARGET_ROOTFS_SQUASHFS
 		bool "squashfs"
 		default y if USES_SQUASHFS
