@@ -103,4 +103,8 @@ define Image/Build/squashfs
 	) > $(BIN_DIR)/$(IMG_PREFIX)-$(BOARD)-$(1).img
 endef
 
+define Image/Build/yaffs2
+       $(STAGING_DIR_HOST)/bin/mkyaffs2image $(STAGING_DIR_ROOT)/ $(BIN_DIR)/openwrt-$(BOARD)-$(1).yaffs2
+endef
+
 $(eval $(call BuildImage))
