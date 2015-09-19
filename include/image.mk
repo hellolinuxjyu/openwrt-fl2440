@@ -77,6 +77,12 @@ else
     endef
   endif
 
+  ifneq ($(CONFIG_TARGET_ROOTFS_YAFFS2),)
+    define Image/mkfs/yaffs2
+		$(call Image/Build,yaffs)
+    endef
+  endif
+
   ifneq ($(CONFIG_TARGET_ROOTFS_SQUASHFS),)
     define Image/mkfs/squashfs
 		@mkdir -p $(TARGET_DIR)/overlay
@@ -168,6 +174,7 @@ define BuildImage
 		$(call Image/mkfs/ext2)
 		$(call Image/mkfs/iso)
 		$(call Image/mkfs/jffs2)
+		$(call Image/mkfs/yaffs2)
 		$(call Image/mkfs/squashfs)
 		$(call Image/mkfs/ubifs)
 		$(call Image/Checksum)
@@ -179,6 +186,7 @@ define BuildImage
 		$(call Image/mkfs/ext2)
 		$(call Image/mkfs/iso)
 		$(call Image/mkfs/jffs2)
+		$(call Image/mkfs/yaffs2)
 		$(call Image/mkfs/squashfs)
 		$(call Image/mkfs/ubifs)
 		$(call Image/Checksum)
