@@ -79,7 +79,7 @@ else
 
   ifneq ($(CONFIG_TARGET_ROOTFS_YAFFS2),)
     define Image/mkfs/yaffs2
-		$(call Image/Build,yaffs)
+		$(call Image/Build,yaffs2)
     endef
   endif
 
