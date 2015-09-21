@@ -43,6 +43,9 @@ config USES_SQUASHFS
 config USES_JFFS2
 	bool
 
+config USES_YAFFS2
+	bool
+
 config USES_EXT2
 	bool
 
