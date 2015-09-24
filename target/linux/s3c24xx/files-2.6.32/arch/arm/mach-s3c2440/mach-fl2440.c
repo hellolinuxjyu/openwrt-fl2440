@@ -251,12 +251,12 @@ static struct platform_device s3c24xx_uda134x = {
 static struct mtd_partition fl2440_arm_default_nand_part[] = {
 	[0] = {
 		.name	= "uboot",
-		.size	= SZ_256K+SZ_128K,
+		.offset = (SZ_1M * 1),
 		.offset	= 0,
 	},
 	[1] = {
 		.name	= "kernel",
-		.offset = ((SZ_256K+SZ_128K)+SZ_128K),
+		.offset = (SZ_1M * 1),
 		.size	= (SZ_1M * 5),
 	},
 	[2] = {
