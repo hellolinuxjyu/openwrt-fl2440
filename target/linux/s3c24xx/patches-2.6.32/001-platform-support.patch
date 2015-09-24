@@ -1,9 +1,9 @@
 #
 # modify mach-smdk2440.c
 #
---- linux-2.6.32.27/arch/arm/mach-s3c2440/mach-smdk2440.c.orig	2011-04-03 05:26:03.000000000 -0400
-+++ linux-2.6.32.27/arch/arm/mach-s3c2440/mach-smdk2440.c	2011-04-03 05:26:03.000000000 -0400
-@@ -173,7 +173,7 @@
+--- a/arch/arm/mach-s3c2440/mach-smdk2440.c
++++ b/arch/arm/mach-s3c2440/mach-smdk2440.c
+@@ -173,7 +173,7 @@ static void __init smdk2440_machine_init
  	smdk_machine_init();
  }
  
@@ -12,12 +12,9 @@
  	/* Maintainer: Ben Dooks <ben@fluff.org> */
  	.phys_io	= S3C2410_PA_UART,
  	.io_pg_offst	= (((u32)S3C24XX_VA_UART) >> 18) & 0xfffc,
-#
-# add fs2410, gec2410 in mach-s3c2410/
-#
---- linux-2.6.32.27/arch/arm/mach-s3c2410/Kconfig.orig	2012-03-17 18:14:52.000000000 +0800
-+++ linux-2.6.32.27/arch/arm/mach-s3c2410/Kconfig	2012-08-28 10:59:30.938056228 +0800
-@@ -162,4 +162,20 @@
+--- a/arch/arm/mach-s3c2410/Kconfig
++++ b/arch/arm/mach-s3c2410/Kconfig
+@@ -162,4 +162,20 @@ config MACH_QT2410
  	help
  	   Say Y here if you are using the Armzone QT2410
  
@@ -38,9 +35,9 @@
 +	   Say Y here if you are using the GEC2410
 +
  endmenu
---- linux-2.6.32.27/arch/arm/mach-s3c2410/Makefile.orig	2012-03-17 18:14:52.000000000 +0800
-+++ linux-2.6.32.27/arch/arm/mach-s3c2410/Makefile	2012-08-28 10:59:30.938056228 +0800
-@@ -31,6 +31,8 @@
+--- a/arch/arm/mach-s3c2410/Makefile
++++ b/arch/arm/mach-s3c2410/Makefile
+@@ -31,6 +31,8 @@ obj-$(CONFIG_BAST_PC104_IRQ)	+= bast-irq
  obj-$(CONFIG_MACH_TCT_HAMMER)	+= mach-tct_hammer.o
  obj-$(CONFIG_MACH_VR1000)	+= mach-vr1000.o usb-simtec.o
  obj-$(CONFIG_MACH_QT2410)	+= mach-qt2410.o
@@ -49,12 +46,22 @@
  
  # Common bits of machine support
  
-#
-# add qq2440, gec2440 in mach-s3c2440/
-#
---- linux-2.6.32.27/arch/arm/mach-s3c2440/Kconfig.orig	2012-03-17 18:14:52.000000000 +0800
-+++ linux-2.6.32.27/arch/arm/mach-s3c2440/Kconfig	2012-08-28 10:59:31.042056226 +0800
-@@ -99,14 +99,33 @@
+--- a/arch/arm/mach-s3c2440/Kconfig
++++ b/arch/arm/mach-s3c2440/Kconfig
+@@ -96,17 +96,46 @@ config MACH_AT2440EVB
+ 	help
+ 	  Say Y here if you are using the AT2440EVB development board
+ 
++config MACH_FL2440
++	bool "FL2440 development board"
++	select CPU_S3C2440
++	select S3C_DEV_NAND
++	select S3C_DEV_USB_HOST
++	select S3C2440_XTAL_12000000
++	help
++	  Say Y here to select support for the FL2440. Is a 10cm x 10cm board
++	  available via various sources. It can come with a 3.5" or 7" touch LCD.
++
  config MACH_MINI2440
  	bool "MINI2440 development board"
  	select CPU_S3C2440
@@ -91,11 +98,12 @@
 +
  endmenu
  
---- linux-2.6.32.27/arch/arm/mach-s3c2440/Makefile.orig	2012-03-17 18:14:52.000000000 +0800
-+++ linux-2.6.32.27/arch/arm/mach-s3c2440/Makefile	2012-08-28 10:59:31.042056226 +0800
-@@ -23,3 +23,5 @@
+--- a/arch/arm/mach-s3c2440/Makefile
++++ b/arch/arm/mach-s3c2440/Makefile
+@@ -23,3 +23,6 @@ obj-$(CONFIG_ARCH_S3C2440)	+= mach-smdk2
  obj-$(CONFIG_MACH_NEXCODER_2440) += mach-nexcoder.o
  obj-$(CONFIG_MACH_AT2440EVB) += mach-at2440evb.o
  obj-$(CONFIG_MACH_MINI2440) += mach-mini2440.o
++obj-$(CONFIG_MACH_FL2440) += mach-fl2440.o
 +obj-$(CONFIG_MACH_QQ2440) += mach-qq2440.o
 +obj-$(CONFIG_MACH_GEC2440) += mach-gec2440.o

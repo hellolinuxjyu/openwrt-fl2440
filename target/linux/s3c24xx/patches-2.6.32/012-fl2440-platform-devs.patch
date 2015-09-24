@@ -1,0 +1,61 @@
+--- a/drivers/char/Kconfig
++++ b/drivers/char/Kconfig
+@@ -97,6 +97,43 @@ config DEVKMEM
+ 	  kind of kernel debugging operations.
+ 	  When in doubt, say "N".
+ 
++config FL2440_HELLO_MODULE
++	tristate "FL2440 module sample"
++	depends on MACH_FL2440
++	default m if MACH_FL2440
++	help
++	  FL2440 module sample.
++
++config FL2440_LEDS
++	tristate "LED Support for FL2440 GPIO LEDs"
++	depends on MACH_FL2440
++	default y if MACH_FL2440
++	help
++	  This option enables support for LEDs connected to GPIO lines
++	  on FL2440 boards.
++
++config FL2440_BUTTONS
++	tristate "Buttons driver for FL2440 development boards"
++	depends on MACH_FL2440
++	default y if MACH_FL2440
++	help
++	  this is buttons driver for FL2440 development boards
++
++config FL2440_BUZZER
++	tristate "Buzzer driver for FL2440 development boards"
++	depends on MACH_FL2440
++	default y if MACH_FL2440
++	help
++	  this is buzzer driver for FL2440 development boards
++
++config FL2440_ADC
++	bool "ADC driver for FL2440 development boards"
++	depends on MACH_FL2440
++	default y if MACH_FL2440
++	help
++	  this is ADC driver for FL2440 development boards
++	  Notes: the touch-screen-driver required this option
++
+ config MINI2440_HELLO_MODULE
+ 	tristate "Mini2440 module sample"
+ 	depends on MACH_MINI2440
+--- a/drivers/char/Makefile
++++ b/drivers/char/Makefile
+@@ -113,6 +113,12 @@ obj-$(CONFIG_PS3_FLASH)		+= ps3flash.o
+ obj-$(CONFIG_JS_RTC)		+= js-rtc.o
+ js-rtc-y = rtc.o
+ 
++obj-$(CONFIG_FL2440_LEDS)	+= fl2440_leds.o
++obj-$(CONFIG_FL2440_HELLO_MODULE) += fl2440_hello_module.o
++obj-$(CONFIG_FL2440_BUTTONS)	+= fl2440_buttons.o
++obj-$(CONFIG_FL2440_BUZZER)	+= fl2440_pwm.o
++obj-$(CONFIG_FL2440_ADC)	+= fl2440_adc.o
++
+ obj-$(CONFIG_LEDS_MINI2440)	+= mini2440_leds.o
+ obj-$(CONFIG_MINI2440_HELLO_MODULE) += mini2440_hello_module.o
+ obj-$(CONFIG_MINI2440_BUTTONS)	+= mini2440_buttons.o
