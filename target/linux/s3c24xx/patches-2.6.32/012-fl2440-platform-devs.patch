@@ -291,10 +291,10 @@
 +};
 +
 +static struct button_irq_desc button_irqs [] = {
-+    {IRQ_EINT0 , S3C2410_GPF(0) ,  S3C2410_GPG0_EINT0  , 0, "KEY0"},
-+    {IRQ_EINT2, S3C2410_GPF(2) ,  S3C2410_GPG3_EINT2 , 1, "KEY1"},
-+    {IRQ_EINT3, S3C2410_GPF(3) ,  S3C2410_GPG5_EINT3 , 2, "KEY2"},
-+    {IRQ_EINT4, S3C2410_GPF(4) ,  S3C2410_GPG6_EINT4 , 3, "KEY3"},
++    {IRQ_EINT0 , S3C2410_GPF(0) ,  S3C2410_GPF0_EINT0  , 0, "KEY0"},
++    {IRQ_EINT2, S3C2410_GPF(2) ,  S3C2410_GPF2_EINT2 , 1, "KEY1"},
++    {IRQ_EINT3, S3C2410_GPF(3) ,  S3C2410_GPF3_EINT3 , 2, "KEY2"},
++    {IRQ_EINT4, S3C2410_GPF(4) ,  S3C2410_GPF4_EINT4 , 3, "KEY3"},
 +};
 +static volatile char key_values [] = {'0', '0', '0', '0'};
 +
