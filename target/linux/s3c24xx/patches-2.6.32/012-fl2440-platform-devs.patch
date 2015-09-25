@@ -711,25 +711,3 @@
 +MODULE_LICENSE("GPL");
 +MODULE_AUTHOR("greatline teamwork");
 +MODULE_DESCRIPTION("S3C2410/S3C2440 PWM Driver");
---- a/include/asm-arm/mach-types.h
-+++ b/include/asm-arm/mach-types.h
-@@ -2532,6 +2532,19 @@ extern unsigned int __machine_arch_type;
- #define MACH_TYPE_MXT_TD60             2550
- #define MACH_TYPE_ESYX                 2551
- #define MACH_TYPE_BULLDOG              2553
-+#define MACH_TYPE_FL2440               2554
-+
-+#ifdef CONFIG_ARCH_FL2440
-+# ifdef machine_arch_type
-+#  undef machine_arch_type
-+#  define machine_arch_type    __machine_arch_type
-+# else
-+#  define machine_arch_type    MACH_TYPE_FL2440
-+# endif
-+# define machine_is_fl2440()   (machine_arch_type == MACH_TYPE_FL2440)
-+#else
-+# define machine_is_fl2440()   (0)
-+#endif
- 
- #ifdef CONFIG_ARCH_EBSA110
- # ifdef machine_arch_type
