@@ -178,12 +178,12 @@ static struct s3c2410fb_display s3c24xx_lcd_cfg_a70  = {
 
 
 struct s3c2410fb_mach_info s3c24xx_fb_info __initdata = {
-	.displays = &s3c24xx_lcd_cfg_a70,
+	.displays = &s3c24xx_lcd_cfg_t35,
 	.num_displays = 1,
 	.default_display = 0,
 };
 
-static char s3c_lcd_type[4] = "A70";
+static char s3c_lcd_type[4] = "T35";
 
 static int __init s3c2410_lcd_setup(char *str)
 {

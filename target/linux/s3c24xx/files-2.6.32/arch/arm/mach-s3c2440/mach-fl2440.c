@@ -445,7 +445,7 @@ static void __init fl2440_map_io(void)
 
 static void __init fl2440_machine_init(void)
 {
-	s3c24xx_fb_set_platdata(&fl2440_fb_info);
+	s3c24xx_fb_set_platdata(&s3c24xx_fb_info);
 	
 	s3c_i2c0_set_platdata(NULL);
 
