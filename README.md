@@ -3,7 +3,7 @@ OpenWrt-FL2440 开发笔记
 ---------------------------------
 同步于openwrt官方嵌入式开发版本分支，用于添加对 fl2440 开发板的 porting 工作。
 
-相关说明请参见官方文档，该仓储仅供参考学习使用. 开发过程可参考 [Wiki](https://github.com/iAlios/openwrt-fl2440/wiki)
+相关说明请参见官方文档，该仓储仅供参考学习使用。 开发过程可参考 [Wiki](https://github.com/iAlios/openwrt-fl2440/wiki)。
 
 官方源如下：
 
