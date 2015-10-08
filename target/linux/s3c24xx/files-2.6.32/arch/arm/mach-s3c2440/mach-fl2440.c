@@ -465,7 +465,7 @@ static void __init fl2440_machine_init(void)
 	s3c_pm_init();
 }
 
-MACHINE_START(FL2440, "FL2440 development board")
+MACHINE_START(SMDK2440, "FL2440 development board")
 	.phys_io	= S3C2410_PA_UART,
 	.io_pg_offst	= (((u32)S3C24XX_VA_UART) >> 18) & 0xfffc,
 	.boot_params	= S3C2410_SDRAM_PA + 0x100,
