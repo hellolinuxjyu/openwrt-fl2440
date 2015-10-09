@@ -151,12 +151,27 @@ GIT仓：[git://github.com/openosom/backfire_10.03.1](https://github.com/openoso
    
     2) 在 target/linux/s3c24xx 文件夹下面建立 dev-fl2440 目录，并添加相关的修改文件，其中最主要的文件是 target.mk ，它是用来声明当前开发板用的，如下所示：
 
-	    BOARDNAME:=FL2440 Development Board
+	BOARDNAME:=FL2440 Development Board
 
-	    define Target/Description
-		    FL2440 Development Board
+	define Target/Description
+		FL2440 Development Board
         endef
        
+    3) 添加开发板自定义 config 文件，个性化配置设备 kernel
+    
+    在根目录下执行如下指令：
+    
+	$ make kernel_menuconfig
+
+    这样在对应的设备文件中创建自己的 config 配置
+    
+    	$ git status
+    	......
+    	 modified:   target/linux/s3c24xx/dev-fl2440/config-2.6.32
+    	......
+    	
+    4) 添加驱动程序(未完)
+    
 ---------------------------------
 ##### Copyright 2015 (C) i.lufei([m.lufei@qq.com](mail.qq.com)) #####
 
